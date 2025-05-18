@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:bookly_app/core/constans/app_assets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../../../../../core/constans/constans.dart';
+import '../../../../home/presentation/view/home_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -17,14 +21,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 800),
-    )..repeat(reverse: true); // Loops the animation
-
-    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.2).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
-    );
+    initAnimation();
+    navigateToHome();
   }
 
   @override
@@ -50,10 +48,30 @@ class _SplashViewBodyState extends State<SplashViewBody>
           'Read Free Books',
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 color: Colors.white,
-          ),
+              ),
           textAlign: TextAlign.center,
         ),
       ],
     );
+  }
+
+  void initAnimation() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
+    )..repeat(reverse: true); // Loops the animation
+
+    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.2).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+    );
+  }
+  Future<Null> navigateToHome() {
+    return Future.delayed(const Duration(seconds: 2), () {
+      Get.to(
+            () => const HomeView(),
+        transition: Transition.fadeIn,
+        duration: kTranstionDuration,
+      );
+    });
   }
 }
