@@ -8,14 +8,17 @@ class FeaturedBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 165.h,
-      child: ListView.separated(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => const FeaturedListViewItem(),
-        separatorBuilder: (context, index) => SizedBox(width: 15.w),
-        itemCount: 5,
+    return Padding(
+      padding: const EdgeInsets.only(left: 20,),
+      child: SizedBox(
+        height: 165.h,
+        child: ListView.separated(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) => const FeaturedListViewItem(),
+          separatorBuilder: (context, index) => SizedBox(width: 15.w),
+          itemCount: 5,
+        ),
       ),
     );
   }
