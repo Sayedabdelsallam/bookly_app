@@ -22,5 +22,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/logo.png  # Explicit file path
-    - assets/images/test_image.png  # Add other images as needed
+    - assets/images/logo.png
+    - assets/images/test_image.png
+  fonts:
+    - family: GT Sectra Fine Regular
+      fonts:
+        - asset: assets/fonts/GT Sectra Fine Regular.ttf
