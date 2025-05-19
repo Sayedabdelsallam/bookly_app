@@ -29,6 +29,5 @@ abstract class Styles {
     color: AppColors.whiteColor,
     fontSize: 20.sp,
     fontWeight: FontWeight.normal,
-    fontFamily: FontRes.GT_SECTRA_FINE_REGULAR,
   );
 }
