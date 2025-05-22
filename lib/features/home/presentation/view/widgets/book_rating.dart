@@ -12,7 +12,7 @@ class BookRating extends StatelessWidget {
       children: [
         Icon(
           CupertinoIcons.star_fill,
-          size: 20.h,
+          size: 16.h,
           color: Colors.amber,
         ),
         SizedBox(

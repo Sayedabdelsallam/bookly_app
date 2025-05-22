@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'custom_list_view_item.dart';
+import 'custom_book_item.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({super.key});
@@ -15,7 +15,7 @@ class FeaturedBooksListView extends StatelessWidget {
         child: ListView.separated(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) => const FeaturedListViewItem(),
+          itemBuilder: (context, index) => const CustomBookImage(),
           separatorBuilder: (context, index) => SizedBox(width: 15.w),
           itemCount: 5,
         ),
