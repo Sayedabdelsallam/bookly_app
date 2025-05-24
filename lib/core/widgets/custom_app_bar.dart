@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../constans/app_assets.dart';
+import '../utils/app_router.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -21,7 +23,10 @@ class CustomAppBar extends StatelessWidget {
           Image.asset(AppAssets.logo, height: 20.h),
           const Spacer(),
           IconButton(
-            onPressed: () {},
+            onPressed: ()
+            {
+              GoRouter.of(context).push(AppRouter.searchView);
+            },
             icon: Icon(
               CupertinoIcons.search,
               color: Colors.white,
