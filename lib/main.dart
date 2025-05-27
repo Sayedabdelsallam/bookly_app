@@ -31,14 +31,14 @@ class BooklyApp extends StatelessWidget {
             BlocProvider(
               create: (context) {
                 final cubit = FeaturedBooksCubit(getIt.get<HomeRepoImpl>());
-                cubit.fetchFeaturedBooks(); // Call on cubit, not repo
+                cubit.fetchFeaturedBooks();
                 return cubit;
               },
             ),
             BlocProvider(
               create: (context) {
                 final cubit = NewsetBooksCubit(getIt.get<HomeRepoImpl>());
-                cubit.fetchNewestBooks(); // Call on cubit, not repo
+                cubit.fetchNewestBooks();
                 return cubit;
               },
             ),
