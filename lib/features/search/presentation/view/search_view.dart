@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/search_view_body.dart';
-
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
 
@@ -9,7 +7,8 @@ class SearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SafeArea(
-        child: SearchViewBody(),
+        child: Text("data"),
+        // SearchViewBody(),
       ),
     );
   }

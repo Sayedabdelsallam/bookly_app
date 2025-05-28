@@ -1,21 +1,26 @@
 import 'package:bookly_app/core/utils/app_router.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/presentation/view/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/constans/app_assets.dart';
 import '../../../../../core/constans/styles.dart';
 import '../../../../../res/font_res.dart';
 import 'book_rating.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
+  const BookListViewItem({
+    super.key,
+    required this.bookModel,
+  });
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () 
-      {
+      onTap: () {
         GoRouter.of(context).push(AppRouter.bookDetailsView);
       },
       child: SizedBox(
@@ -24,18 +29,8 @@ class BookListViewItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
             children: [
-              Container(
-                width: 80.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.r),
-                  color: const Color(0xFFC4C4C4),
-                  image: const DecorationImage(
-                    image: AssetImage(
-                      AppAssets.test,
-                    ),
-                    fit: BoxFit.fill,
-                  ),
-                ),
+              CustomBookImage(
+                imageUrl: bookModel.volumeInfo.imageLinks!.thumbnail,
               ),
               SizedBox(width: 30.w),
               Expanded(
@@ -45,7 +40,7 @@ class BookListViewItem extends StatelessWidget {
                     SizedBox(
                       width: 200.w,
                       child: Text(
-                        'Harry Potter and the Goblet of Fire - J. K. Rowling (2005)',
+                        bookModel.volumeInfo.title!,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: Styles.textStyle20.copyWith(
@@ -55,20 +50,24 @@ class BookListViewItem extends StatelessWidget {
                     ),
                     SizedBox(height: 5.h),
                     Text(
-                      'J. K. Rowling',
+                      bookModel.volumeInfo.authors![0],
                       style: Styles.textStyle14,
+                      overflow: TextOverflow.ellipsis
                     ),
                     SizedBox(height: 5.h),
                     Row(
                       children: [
                         Text(
-                          '29.99 \$',
+                          "Free",
                           style: Styles.textStyle20.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         const Spacer(),
-                        const BookRating(),
+                         BookRating(
+                          rating: bookModel.volumeInfo.averageRating?.toInt() ?? 0,
+                          count: bookModel.volumeInfo.ratingsCount ?? 0,
+                        ),
                       ],
                     ),
                   ],
