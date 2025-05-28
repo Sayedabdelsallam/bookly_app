@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,16 +12,21 @@ class CustomBookImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2.7 / 4,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15.r),
-          image:  DecorationImage(
-            image: NetworkImage(
-             imageUrl
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15.r),
+      child: AspectRatio(
+        aspectRatio: 2.7 / 4,
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.fill,
+          errorWidget: (context, url, error) => const Icon(
+            Icons.error,
+            color: Colors.red,
+          ),
+          placeholder: (context, url) => const Center(
+            child: CircularProgressIndicator(
+              color: Colors.white,
             ),
-            fit: BoxFit.fill,
           ),
         ),
       ),
